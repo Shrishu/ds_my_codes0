@@ -1,5 +1,4 @@
 //implementing single linked list in c++
-//question for gate what will happen if i declare head pointer in the createsll function
 #include<iostream>
 using namespace std;
 struct node{
