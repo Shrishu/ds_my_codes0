@@ -22,7 +22,7 @@ int main(){
     cout<<"height of the complete tree would be  ";
     cout<<height;
     cout<<endl;
-    cout<<"enter data as in the prefix traversal\n";
+    cout<<"enter data as in the preorder traversal\n";
     root = createTree(root,0);
     print(root);
 
@@ -42,14 +42,13 @@ struct node * createTree(struct node *parent,int cure){
     }
 
     else{
-
+        
+        if(j<=height){
         cout<<"enter data ";
         cin>>parent->data;
-        n--;
-        if(j<=height){
-            j++;
-            
-        parent->left = createTree(parent->left,j);
+        n--;       
+        j++;          
+        parent->left = createTree(parent->left,j);       
         parent->right = createTree(parent->right,j);
         return parent;
     }
@@ -59,7 +58,7 @@ struct node * createTree(struct node *parent,int cure){
 
     }
     }     
-    }
+    } 
 
 
     void print(struct node *t){
