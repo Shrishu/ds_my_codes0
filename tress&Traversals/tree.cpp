@@ -1,10 +1,15 @@
+  
 #include<iostream>
 #include<cmath>
 using namespace std;
 
 struct node * createTree(struct node * parent ,int cure);
 
-void print(struct node *t);
+void preorder(struct node *t);
+
+void postorder(struct node *root);
+
+void inorder(struct node *root);
 
 struct node{
     int data;
@@ -18,13 +23,26 @@ int main(){
 
     cout<<"enter no of nodes req in the tree ";
     cin>>n;
-    height= log(n)/log(2);
+    
+   height= log(n)/log(2);
     cout<<"height of the complete tree would be  ";
     cout<<height;
     cout<<endl;
     cout<<"enter data as in the preorder traversal\n";
+    
+    
+    
     root = createTree(root,0);
-    print(root);
+    cout<<"preorder traversal  ";
+    preorder(root);
+    cout<<endl;
+    cout<<"inorder traversal  ";
+    inorder(root);
+    cout<<endl;
+    cout<<"postorder traversal  ";
+    postorder(root);
+    cout<<endl;
+ 
 
    return 0;    
 }
@@ -61,10 +79,34 @@ struct node * createTree(struct node *parent,int cure){
     } 
 
 
-    void print(struct node *t){
+  // functions to print tree in various orders
+
+//preorder
+    void preorder(struct node *t){
         if(t){
             cout<<t->data<<"  ";
-            print(t->left);
-            print(t->right);
+            preorder(t->left);
+            preorder(t->right);
+        }
+    }
+    
+    //function to read a tree by inorder traversal
+    
+    void inorder(struct node * root){
+       if(root){
+        
+        inorder(root->left);
+        cout<<root->data<<"  ";
+        inorder(root->right);
+       }   
+    }
+    
+    
+    //postorder
+    void postorder(struct node * root){
+        if(root){
+            postorder(root->left);
+            postorder(root->right);
+            cout<<root->data<<"  ";
         }
     }
